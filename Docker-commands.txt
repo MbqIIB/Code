@@ -1,0 +1,109 @@
+To install 
+$docker
+$docker –version
+
+To list commands
+$docker help
+
+To verify containers/images are currently available
+$docker images
+
+To specify image name and run it
+$docker run --name <new image name> <existing image id>
+
+To run a container from an image
+$docker run <image name>
+
+To run a container interactively
+$docker run –it <image name>
+
+To list commands running on local system
+$docker ps
+
+To list all the containers from local system
+$docker ps –a
+
+To get only container id
+$docker run –d <image name>
+
+To list output of container running in background
+$docker logs <container id>
+
+To display last 5 outputs
+$docker logs –tail 5 <container id>
+
+To stop a running container
+$docker stop <container id>
+$docker kill <container id>
+
+To start a container
+$docker start –I <container id>
+
+To access an image from anywhere
+$docker run –publish-all <image name>
+
+To build a docker
+$docker build –t <image name> <file location>
+
+Docker file example
+FROM Ubuntu
+RUN apt-get update
+RUN apt-get install –y wget
+CMD wget –o- -q https://ifconfig.co/ip
+
+To specify entry point in docker file
+FROM Ubuntu
+RUN apt-get update
+RUN apt-get install –y wget
+ENTRYPOINT  [“wget”, “-o-“, “q”]
+
+To check change inside container
+$docker diff <container id>
+
+To create an image of existing container
+$docker commit <container id>
+
+To create repository and tag
+$docker tag <image id> <docker hub: tag name>
+
+To push created image to docker repository
+$docker push <repository & tag name>
+
+To pull image 
+$docker pull <image name>
+
+To route image to a specific port
+$docker run –p <88:8000> <image name>
+
+To link two container
+$docker run –it –name <new container name> --link <existing container name> : <alias name> <image id> <command>
+
+To install curl package to a container
+Apt-get install curl
+
+To run a container with volume creation
+$docker run –it –name <name> -v <directory path> <command>
+
+To use existing container which was created with volume
+$docker run –t –name <name> --volumes-from <existing container name> <command>
+
+To remove a container
+$docker rm –f <container id>
+
+To remove an image
+$docker rmi <image name>
+
+To remove all containers
+$docker rm $(docker ps –a –q)
+
+To remove all images
+$docker rmi –f $(docker images)
+
+Docker compose
+It is use to setup a list of different containers into one and connect those and run as a single container
+
+To see list of commands in compose
+$docker–compose
+
+To run docker compose file
+$docker-compose up
